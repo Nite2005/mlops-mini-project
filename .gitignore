@@ -5,6 +5,7 @@ models
 # C extensions
 *.so
 myenv
+mlruns
 # Distribution / packaging
 .Python
 env/
