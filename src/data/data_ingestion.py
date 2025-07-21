@@ -26,7 +26,7 @@ def load_params(params_path: str) -> float:
     try:
         with open(params_path, 'r') as file:
             config = yaml.safe_load(file)
-        test_size = config['Data_ingestion']['test_size']
+        test_size = config['data_ingestion']['test_size']
         logger.debug('test_size reterived')
         return test_size
     except FileNotFoundError:

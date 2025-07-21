@@ -1,5 +1,5 @@
 # updated model evaluation
-
+import sys
 import numpy as np
 import pandas as pd
 import pickle
@@ -11,6 +11,15 @@ import mlflow.sklearn
 import dagshub
 import os
 
+
+
+import sys
+import os
+
+# Add the root project directory (which contains `src`) to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+
+from src.model.log_model import Mymodel
 # Set up DagsHub credentials for MLflow tracking
 # dagshub_token = os.getenv("DAGSHUB_PAT")
 # if not dagshub_token:
@@ -140,14 +149,19 @@ def main():
                     mlflow.log_param(param_name, param_value)
             
             # Log model to MLflow
-            mlflow.sklearn.log_model(clf, "model")
-            
+
+            print("HIII i am starting log model")
+
+            mlflow.sklearn.log_model(clf,"model")
+
+
+            print("I am ending log model")
             # Save model info
             save_model_info(run.info.run_id, "model", 'reports/experiment_info.json')
-            
+            mlflow.log_artifact('models/model.pkl')
             # Log the metrics file to MLflow
             mlflow.log_artifact('reports/metrics.json')
-
+            
             # Log the model info file to MLflow
             mlflow.log_artifact('reports/model_info.json')
 
