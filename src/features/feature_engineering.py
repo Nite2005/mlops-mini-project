@@ -4,7 +4,7 @@ import logging
 import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
-
+import pickle
 # ---------------- Logging Configuration ---------------- #
 logging.basicConfig(
     filename='pipeline.log',
@@ -69,7 +69,9 @@ try:
     vectorizer = CountVectorizer(max_features=max_feature)
     
     X_train_bow = vectorizer.fit_transform(x_train)
-    X_test_bow = vectorizer.transform(x_test)  # Use transform, not fit_transform for test
+    X_test_bow = vectorizer.transform(x_test) 
+    pickle.dump(vectorizer,open('models/vectorizer.pkl','wb'))
+     # Use transform, not fit_transform for test
     logging.info("BOW transformation successful.")
 except Exception as e:
     logging.error(f"Error in CountVectorizer: {e}")
