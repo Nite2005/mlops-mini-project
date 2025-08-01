@@ -17,6 +17,9 @@ jobs:
       - name: install dependencies
         run: |
           pip install -r requirements.txt
+      - name: install nltk data
+        runs: |
+          python -m nltk.downloader punkt
       - name: run pipeline
         run: |
           dvc repro
