@@ -31,10 +31,10 @@ os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
 dagshub_url = "https://dagshub.com"
 repo_owner = "Nite2005"
 repo_name = "mlops-mini-project"
-dagshub.init(repo_owner='Nite2005', repo_name='mlops-mini-project', mlflow=True)
+# dagshub.init(repo_owner='Nite2005', repo_name='mlops-mini-project', mlflow=True)
 
 # Set up MLflow tracking URI
-mlflow.set_tracking_uri("https://dagshub.com/Nite2005/mlops-mini-project.mlflow")
+# mlflow.set_tracking_uri("https://dagshub.com/Nite2005/mlops-mini-project.mlflow")
 
 # logging configuration
 logger = logging.getLogger('model_evaluation')
