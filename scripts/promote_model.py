@@ -31,11 +31,11 @@ def promote_model():
 
     client.transition_model_version_stage(
         name = model_name,
-        version = latest_version_staging,
+        version = latest_staging_version,
         stage = "Production"
     )
     
-    print(f"Model version {latest_version_staging} promoted to Production")
+    print(f"Model version {latest_staging_version} promoted to Production")
 
 
 if __name__ == "__main__":
