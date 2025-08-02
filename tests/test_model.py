@@ -19,7 +19,7 @@ class TestModelLoading(unittest.TestCase):
 
         mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
 
-        cls.model_name = "my_model"
+        cls.model_name = "emotion_detection"
         cls.model_version = cls.get_latest_model_version(cls.model_name)
         cls.model_uri = f'model:/{cls.model_name}/{cls.model_version}'
         cls.model = mlflow.pyfunc.load_model(cls.model_uri)
