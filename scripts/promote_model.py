@@ -19,8 +19,8 @@ def promote_model():
     client = mlflow.MlflowClient()
 
     model_name = "emotion_detection"
-    latest_version_staging = client.get_latest_versions(model_name, stages=['Staging'][0].version)
-
+    staging_versions = client.get_latest_versions(model_name, stages=['Staging'])
+    latest_staging_version = staging_versions[0].version
     prod_versions = client.get_latest_versions(model_name,stages = ['Production'])
     for version in prod_versions:
         client.transition_model_version_stage(
