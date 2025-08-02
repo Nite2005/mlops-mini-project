@@ -30,6 +30,8 @@ class TestModelLoading(unittest.TestCase):
         cls.model = mlflow.pyfunc.load_model(cls.model_uri)
         cls.vectorizer = pickle.load(open('models/vectorizer.pkl','rb'))
 
+        cls.holdout_data = pd.read_csv('data/interim/test_bow.csv')
+
     @staticmethod
     def get_latest_model_version(model_name):
         client = mlflow.MlflowClient()
@@ -57,7 +59,7 @@ class TestModelLoading(unittest.TestCase):
         y_holdout = self.holdout_data.iloc[:,-1]
 
         #Predict using the new model
-        y_pred_new = self.new_model.predict(X_holdout)
+        y_pred_new = self.model.predict(X_holdout)
 
         #calculate performance metrics for the new model
         accuracy_new = accuracy_score(y_holdout,y_pred_new)
