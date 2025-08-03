@@ -3,10 +3,10 @@ FROM python:3.9
 
 # WORKDIR
 
-WORKDIR /app
+WORKDIR /app/flask_app
 
 #copy
-COPY flask_app/ /app/
+COPY flask_app/ /app/flask_app/
 
 COPY models/vectorizer.pkl  /app/models/vectorizer.pkl
 
@@ -16,4 +16,4 @@ RUN python -m nltk.downloader stopwords wordnet
 
 EXPOSE 5000
 
-CMD ["gunicorn","-b","0.0.0.0:5000", "flask_app.app:app"]
+CMD ["gunicorn","-b","0.0.0.0:5000", "app:app"]
