@@ -1,6 +1,6 @@
 from flask import Flask,render_template,request
 import mlflow
-from flask_app.preprocessing_utility import normalize_text
+from preprocessing_utility import normalize_text
 #load model from model registry
 import dagshub
 import pickle
@@ -56,4 +56,6 @@ def predict():
 
     return render_template('index.html',result=result[0])
 
-app.run(debug=True)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0",debug=True)
