@@ -21,4 +21,4 @@ class FlaskAppTests(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    test_flask_app()
+    unittest.main()
