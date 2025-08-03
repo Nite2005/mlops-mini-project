@@ -59,7 +59,7 @@ jobs:
         if: success()
         uses: docker/login-action@v2
         with:
-          usernam: ${{ secrets.DOCKER_HUB_USERNAME }}
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
       - name: Build docker image
