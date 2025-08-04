@@ -21,6 +21,7 @@ repo_name = "mlops-mini-project"
 mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
 
 
+
 app = Flask(__name__)
 model_name = "emotion_detection"
 model_version = 1
