@@ -42,7 +42,7 @@ class TestModelLoading(unittest.TestCase):
         self.assertIsNotNone(self.model)
 
     def test_model_signature(self):
-        input_text = "hi how are you"
+        input_text = "hi how are you "
         input_data = self.vectorizer.transform([input_text])
         input_df = pd.DataFrame(input_data.toarray(),columns=self.vectorizer.get_feature_names_out())
         
