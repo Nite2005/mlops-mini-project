@@ -158,7 +158,7 @@ jobs:
       
       - name: Build Docker image
         run: |
-          docker build -t emotion_detection .
+          docker build -t emotion_detection:v1 .
       
       - name: Tag Docker image
         run: |
