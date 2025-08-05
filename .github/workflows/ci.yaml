@@ -186,4 +186,4 @@ jobs:
             docker rm my-app || true
             docker run -p 80:5000 --name my-app \
               -e DAGSHUB_PAT=${{ secrets.DAGSHUB_PAT }} \
-              ${{ secrets.DOCKER_HUB_USERNAME }}/emotion_detection:v1
+              619071355884.dkr.ecr.ap-south-1.amazonaws.com/emotion_detection:v1
