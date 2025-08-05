@@ -162,11 +162,11 @@ jobs:
       
       - name: Tag Docker image
         run: |
-          docker tag emotion_detection:latest 619071355884.dkr.ecr.ap-south-1.amazonaws.com/emotion_detection:latest
+          docker tag emotion_detection:v1 619071355884.dkr.ecr.ap-south-1.amazonaws.com/emotion_detection:v1
       
       - name: Push Docker image to AWS ECR
         run: |
-          docker push 619071355884.dkr.ecr.ap-south-1.amazonaws.com/emotion_detection:latest
+          docker push 619071355884.dkr.ecr.ap-south-1.amazonaws.com/emotion_detection:v1
           
 
 
@@ -181,9 +181,9 @@ jobs:
             aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
             aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 619071355884.dkr.ecr.ap-south-1.amazonaws.com
-            docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/emotion3:latest
+            docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/emotion_detection:v1
             docker stop my-app || true
             docker rm my-app || true
             docker run -p 80:5000 --name my-app \
               -e DAGSHUB_PAT=${{ secrets.DAGSHUB_PAT }} \
-              ${{ secrets.DOCKER_HUB_USERNAME }}/emotion3:latest
+              ${{ secrets.DOCKER_HUB_USERNAME }}/emotion_detection:v1
