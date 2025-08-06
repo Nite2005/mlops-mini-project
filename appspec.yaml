@@ -5,7 +5,7 @@ files:
     destination: /home/ubuntu/app
 hooks:
     BeforeInstall:
-      - location: deploy/scripts/install_dependencies.ssh
+      - location: deploy/scripts/install_dependencies.sh
         timeout: 300
         runas: ubuntu
     ApplicationStart:
